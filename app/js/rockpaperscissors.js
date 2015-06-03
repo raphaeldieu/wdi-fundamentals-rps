@@ -42,41 +42,33 @@ function getWinner(playerMove,computerMove) {
     // Write code that will set winner to either 'player', 'computer', or 'tie' based on the values of playerMove and computerMove.
     // Assume that the only values playerMove and computerMove can have are 'rock', 'paper', and 'scissors'.
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
-    var computer = "rock";
-    var player = "scissors";
-    var result
-
-if ((computer === "scissors") && (player === "paper")){
-    result = "computer";
-}
-else if ((computer === "scissors") && (player === "scissors")){
-    result = "tie";
-}
-else if ((computer === "scissors") && (player === "rock")){
-    result = "player";
-}
-else if ((computer === "paper") && (player === "paper")){
-    result = "tie";
-}
-else if ((computer === "paper") && (player === "scissors")){
-    result = "player";
-}
-else if ((computer === "paper") && (player === "rock")){
-    result = "computer";
-}
-else if ((computer === "rock") && (player === "paper")){
-    result = "player";
-}
-else if ((computer === "rock") && (player === "scissors")){
-    result = "computer";
-}
-else if ((computer === "rock") && (player === "rock")){
-    result = "tie";
-}
-else {
-    result = "please input rock, paper or scissors";
-}
-  console.log(result);
+if (playerMove === computerMove){
+        winner = "tie";
+    }
+    if (playerMove === "scissors"){
+        if(computerMove ==="rock"){
+            winner = "computer";
+        }
+        else{
+            winner = "player";
+        }
+    }
+    if (playerMove ==="rock"){
+        if (computerMove === "paper" ){
+            winner = "computer";
+        }
+        else {
+            winner = "player";
+        }
+    }
+    if (playerMove === "paper"){
+        if (computerMove === "scissors"){
+            winner = "computer";
+        }
+        else {
+            winner = "player";
+        }
+    }
     return winner;
 }
 
