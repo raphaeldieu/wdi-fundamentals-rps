@@ -36,12 +36,10 @@ function getComputerMove(move) {
 }
 
 function getWinner(playerMove,computerMove) {
+    
     var winner;
     
-    if (playerMove === computerMove){
-        winner = "tie";
-    }
-    else if (playerMove === "scissors"){
+    if (playerMove === "scissors"){
         if(computerMove ==="rock"){
             winner = "computer";
         }
@@ -49,6 +47,7 @@ function getWinner(playerMove,computerMove) {
             winner = "player";
         }
     }
+    
     else if (playerMove ==="rock"){
         if (computerMove === "paper" ){
             winner = "computer";
@@ -57,44 +56,61 @@ function getWinner(playerMove,computerMove) {
             winner = "player";
         }
     }
+    
     else if (playerMove === "paper"){
         if (computerMove === "scissors"){
             winner = "computer";
         }
-        else {
-            winner = "player";
+    else if (playerMove === computerMove){
+        winner = "tie";
+    }
+    else {
+        winner = "player";
         }
     }
     return winner;
 }
 
+
 function playToFive() {
-    
+   
     console.log("Let's play Rock, Paper, Scissors");
     
     var playerWins = 0;
     var computerWins = 0;
-    var winner = getWinner();
-
-    while (playerWins !== 5 || computerWins !== 5){
-    
-    
-    if (winner === "player"){
-        playerWins += 1;
+ 
+    while (playerWins < 5 && computerWins < 5){
         
-    }
-    else if (winner === "computer"){
-        computerWins += 1;
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove(); 
+        var winner = getWinner(playerMove, computerMove);
         
-    }
-    else if (winner === "tie"){
-        console.log("Tie, try again.");
-    }
+        if (winner === "player"){
+            playerWins ++;
+        }
+        else if (winner === "computer"){
+            computerWins ++;
+        }
+        else if (winner === "tie"){
+            console.log("It's a tie !");
+        }
+        else{
+            null;
+        }
    
-    console.log("The score is " + [playerWins] +" for the player and "+[computerWins] +" for the computer" );
-    return [playerWins, computerWins];
-    }
-    console.log("Final score"+ [playerWins]+ "for the player and "+[computerWins]+ " for the computer");
+        console.log("The score is " + [playerWins] +" for the player and "+[computerWins] +" for the computer" );
     }
     
+    if (playerWins === 5){
+        console.log("**** Player Wins !! ****");
+    }
+    else if (computerWins === 5){
+        console.log("**** Computer Wins!! ****");
+    }
+    else {
+        null;
+    }
+    return [playerWins, computerWins];
+}
 
+playToFive();
