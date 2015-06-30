@@ -97,7 +97,7 @@ function playToFive() {
         else{
             null;
         }
-        console.log("Player played "+[playerMove]+ " and Computer played "+ [computerMove] )
+        console.log("Player played "+[playerMove]+ " and Computer played "+ [computerMove] );
         console.log("The score is " + [playerWins] +" for the player and "+[computerWins] +" for the computer" );
     }
 
